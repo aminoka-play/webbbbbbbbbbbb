@@ -43,3 +43,22 @@ if (topButton) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 }
+let name = localStorage.getItem("userName");
+
+if (!name) {
+    name = prompt("Как тебя зовут?");
+
+    if (name === null) {
+        name = "Гость";
+    } else {
+        name = name.trim();
+    }
+
+    if (name === "") {
+        name = "Гость";
+    }
+
+    localStorage.setItem("userName", name);
+}
+
+alert(`Привет, ${name}! Добро пожаловать в портфолио!`);
