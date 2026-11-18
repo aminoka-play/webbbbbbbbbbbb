@@ -45,18 +45,31 @@ if (topButton) {
 }
 
 // Приветствие пользователя
-let name = localStorage.getItem("userName");
+let nameInput = document.getElementById("userNameInput");
+let saveNameButton = document.getElementById("saveNameButton");
+let greetingText = document.getElementById("greetingText");
 
-if (!name) {
-    name = prompt("Как тебя зовут?");
+// Загружаем сохранённое имя
+let savedName = localStorage.getItem("userName");
 
-    if (name === null || name.trim() === "") {
-        name = "Гость";
-    } else {
-        name = name.trim();
-    }
-
-    localStorage.setItem("userName", name);
+if (savedName && greetingText) {
+    greetingText.textContent = "Привет, " + savedName + "! Добро пожаловать в портфолио!";
 }
 
-alert("Привет, " + name + "! Добро пожаловать в портфолио!");
+// Сохраняем новое имя
+if (saveNameButton) {
+    saveNameButton.onclick = function () {
+        let name = nameInput.value.trim();
+
+        if (name === "") {
+            alert("Пожалуйста, введите своё имя!");
+            return;
+        }
+
+        localStorage.setItem("userName", name);
+
+        greetingText.textContent = "Привет, " + name + "! Добро пожаловать в портфолио!";
+
+        nameInput.value = "";
+    };
+}
