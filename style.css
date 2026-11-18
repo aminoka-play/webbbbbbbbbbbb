@@ -785,3 +785,7 @@ footer .disclaimer {
     width: 100%;
   }
 }
+
+html {
+    scroll-behavior: smooth;
+}
