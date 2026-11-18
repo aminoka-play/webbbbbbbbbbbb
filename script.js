@@ -73,8 +73,3 @@ if (saveNameButton) {
         nameInput.value = "";
     };
 }
-
-/* Плавная прокрутка по сайту */
-html {
-    scroll-behavior: smooth;
-}
